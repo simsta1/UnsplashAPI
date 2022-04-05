@@ -10,8 +10,16 @@ class UnsplashUsers(object):
         self.access_key = access_key
         self.session = requests.Session()
 
+    def get_current_user(self):
+        endpoint = self.base_url + '/me'
+        response = self.session.get(endpoint,
+                                    params=dict(client_id=self.access_key))
+        if not response.status_code == 200:
+            raise Exception(f'Not able to extract content. Code - {response.status_code}')
+
+        return response.json()
+
     def get_user_profile(self, username):
-        """"""
         endpoint = self.base_url + f'/users/{username}'
         response = self.session.get(endpoint,
                                     params=dict(client_id=self.access_key))
