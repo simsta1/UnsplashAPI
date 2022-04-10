@@ -9,8 +9,6 @@ class UnsplashPhotos(UnsplashBase):
     API-Doc: https://unsplash.com/documentation#list-photos
     """
 
-    base_url = 'https://api.unsplash.com/'
-
     def __init__(self, access_key: str, order_by: str = 'latest'):
         """
 

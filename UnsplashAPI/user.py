@@ -4,8 +4,6 @@ from base import UnsplashBase
 
 class UnsplashUsers(UnsplashBase):
 
-    base_url = 'https://api.unsplash.com/'
-
     def __init__(self, access_key):
         """"""
         super().__init__()
