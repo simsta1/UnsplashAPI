@@ -1,2 +1,2 @@
 # UnsplashAPI
-Unofficial Wrapper for UnsplashAPI written in Python
+Inofficial Wrapper for UnsplashAPI written in Python
