@@ -1,14 +1,15 @@
 import requests
+from base import UnsplashBase
 
 
-class UnsplashUsers(object):
+class UnsplashUsers(UnsplashBase):
 
     base_url = 'https://api.unsplash.com/'
 
     def __init__(self, access_key):
         """"""
+        super().__init__()
         self.access_key = access_key
-        self.session = requests.Session()
 
     def get_current_user(self):
         endpoint = self.base_url + '/me'
