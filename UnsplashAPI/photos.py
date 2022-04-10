@@ -1,7 +1,8 @@
 import requests
+from base import UnsplashBase
 
 
-class UnsplashPhotos(object):
+class UnsplashPhotos(UnsplashBase):
     """
     This class implements API functionalities for the subcategory
     Photos.
@@ -19,9 +20,9 @@ class UnsplashPhotos(object):
         order_by:               Defines the ordering of the images:
                                 latest, oldest, popular; default: latest
         """
+        super().__init__()
         self.access_key = access_key
         self.order_by = order_by
-        self.session = requests.Session()
 
     def list_photos_paginate(self, page_limit: int = 10, items_per_page: int = 10):
         """
