@@ -1,6 +1,4 @@
 import unittest
-#import sys
-#sys.path.append('..')
 from UnsplashAPI.base import UnsplashBase
 import os
 
