@@ -82,23 +82,25 @@ class TestAPICollections(unittest.TestCase):
         self.assertEqual(response['title'], self.collection_title)
     
     def test_collection_get_collection_photos(self):
-        try:    
-            response = self.api.get_collection_photos(collection_id=self.collection_id,
+        response = self.api.get_collection_photos(collection_id=self.collection_id,
                                                     page_limit=self.page_limit, 
                                                     per_page=self.items_per_page)
+
+        
+        try:
+            elements = []
+            for element in response:
+                elements.append(element)
         except Exception:
             self.access_key_idx += 1
             print('Changed Key ID')
             if self.access_key_idx == len(access_keys):
                 self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
-            response = self.api.get_collection_photos(collection_id=self.collection_id,
-                                                    page_limit=self.page_limit, 
-                                                    per_page=self.items_per_page)
+            elements = []
+            for element in response:
+                elements.append(element)
 
-        elements = []
-        for element in response:
-            elements.append(element)
         self.assertEqual(self.page_limit, len(elements))
         self.assertEqual(self.items_per_page, len(element))
         self.assertIsInstance(element[0], dict)
