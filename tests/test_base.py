@@ -1,7 +1,7 @@
 import unittest
 #import sys
 #sys.path.append('..')
-from ..UnsplashAPI.base import UnsplashBase
+from UnsplashAPI.base import UnsplashBase
 import os
 
 access_key = os.environ['ACCESSKEY']
