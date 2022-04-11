@@ -15,8 +15,8 @@ class TestAPICollections(unittest.TestCase):
     access_key_idx = 0
 
     # Params
-    page_limit = 5
-    items_per_page = 10
+    page_limit = 2
+    items_per_page = 5
     # Dict keys to check
     check_keys = ['id', 'title', 'description', 'published_at']
     # Check collection IDS
@@ -32,20 +32,22 @@ class TestAPICollections(unittest.TestCase):
 
     # Collections
     def test_collections_list_collections_paginate(self):
-        try:    
-            response = self.api.list_collections_paginate(page_limit=self.page_limit, 
-                                                        items_per_page=self.items_per_page)
+        response = self.api.list_collections_paginate(page_limit=self.page_limit, 
+                                                        items_per_page=self.items_per_page)            
+        try:
+            results = []
+            for element in response:
+                results.append(element)
         except Exception:
             self.access_key_idx += 1
             print('Changed Key ID')
             if self.access_key_idx == len(access_keys):
                 self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
-            response = self.api.list_collections_paginate(page_limit=self.page_limit, 
-                                                        items_per_page=self.items_per_page)
-        results = []
-        for element in response:
-            results.append(element)
+            results = []
+            for element in response:
+                results.append(element)
+
         self.assertEqual(self.page_limit, len(results))
         self.assertEqual(self.items_per_page, len(element))
 
