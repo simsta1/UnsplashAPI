@@ -20,6 +20,7 @@ class TestAPICollections(unittest.TestCase):
     collection_id = 2001768
     collection_title = 'Life in the Deep'
 
+    # Init API
     api = UnsplashAPI(access_key=access_key)
 
     # General Test
@@ -47,7 +48,7 @@ class TestAPICollections(unittest.TestCase):
     def test_collections_get_collection_by_id(self):
         response = self.api.get_collection_by_id(collection_id=self.collection_id)
         self.assertIsInstance(response, dict)
-        self.assertEqual(int(response['id']), self.collection_id)
+        self.assertEqual(response['id'], str(self.collection_id))
         self.assertEqual(response['title'], self.collection_title)
     
     def test_collection_get_collection_photos(self):
