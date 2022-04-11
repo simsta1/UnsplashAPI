@@ -1,7 +1,7 @@
-from collection import UnsplashCollections
-from photos import UnsplashPhotos, UnsplashSearch
-from user import UnsplashUsers
-from topics_stats import UnsplashStats, UnsplashTopics
+from .collection import UnsplashCollections
+from .photos import UnsplashPhotos, UnsplashSearch
+from .user import UnsplashUsers
+from .topics_stats import UnsplashStats, UnsplashTopics
 
 
 class UnsplashAPI(UnsplashCollections, UnsplashPhotos,

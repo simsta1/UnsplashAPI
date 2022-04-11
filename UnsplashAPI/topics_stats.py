@@ -1,4 +1,4 @@
-from base import UnsplashBase
+from .base import UnsplashBase
 import requests
 
 

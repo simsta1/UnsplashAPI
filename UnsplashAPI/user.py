@@ -1,5 +1,5 @@
 import requests
-from base import UnsplashBase
+from .base import UnsplashBase
 
 
 class UnsplashUsers(UnsplashBase):
