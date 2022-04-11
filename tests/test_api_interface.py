@@ -5,7 +5,7 @@ from xmlrpc.client import ResponseError
 from UnsplashAPI.api import UnsplashAPI
 import os
 
-access_keys = [os.environ['ACCESSKEY'], os.environ['ACCESSKEY2']]
+access_keys = [os.environ['ACCESSKEY'], os.environ['ACCESSKEY2'], os.environ['ACCESSKEY3']]
 
 class TestAPICollections(unittest.TestCase):
     """
@@ -38,6 +38,8 @@ class TestAPICollections(unittest.TestCase):
                                                         items_per_page=self.items_per_page)
         except Exception:
             self.access_key_idx += 1
+            if self.access_key_idx == len(access_keys):
+                self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
             response = self.api.list_collections_paginate(page_limit=self.page_limit, 
                                                         items_per_page=self.items_per_page)
@@ -52,6 +54,8 @@ class TestAPICollections(unittest.TestCase):
             response = self.api.list_collection(page=1, items_per_page=self.items_per_page)
         except Exception:
             self.access_key_idx += 1
+            if self.access_key_idx == len(access_keys):
+                self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
             response = self.api.list_collection(page=1, items_per_page=self.items_per_page)
 
@@ -66,6 +70,8 @@ class TestAPICollections(unittest.TestCase):
             response = self.api.get_collection_by_id(collection_id=self.collection_id)
         except Exception:
             self.access_key_idx += 1
+            if self.access_key_idx == len(access_keys):
+                self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
             response = self.api.get_collection_by_id(collection_id=self.collection_id)
 
@@ -80,6 +86,8 @@ class TestAPICollections(unittest.TestCase):
                                                     per_page=self.items_per_page)
         except Exception:
             self.access_key_idx += 1
+            if self.access_key_idx == len(access_keys):
+                self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
             response = self.api.get_collection_photos(collection_id=self.collection_id,
                                                     page_limit=self.page_limit, 
@@ -97,9 +105,11 @@ class TestAPICollections(unittest.TestCase):
             response = self.api.get_related_collections(collections_id=self.collection_id)
         except Exception:
             self.access_key_idx += 1
+            if self.access_key_idx == len(access_keys):
+                self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
             response = self.api.get_related_collections(collections_id=self.collection_id)
-            
+
         self.assertIsInstance(response, list)
 
         # Check keys in one response
