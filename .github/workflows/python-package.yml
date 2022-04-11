@@ -38,16 +38,19 @@ jobs:
     - name: Unittest - Base Func of API.
       env:
           ACCESSKEY: ${{ secrets.API_ACCESSKEY}}
+          ACCESSKEY2: ${{ secrets.API_ACCESSKEY2}}
       run: |
         python -m unittest tests/test_base.py
     - name: Unittest - Subclasses
       env:
           ACCESSKEY: ${{ secrets.API_ACCESSKEY}}
+          ACCESSKEY2: ${{ secrets.API_ACCESSKEY2}}
       run: |
         python -m unittest tests/test_subclasses.py
     - name: Unittest - API Interface
       env:
           ACCESSKEY: ${{ secrets.API_ACCESSKEY}}
+          ACCESSKEY2: ${{ secrets.API_ACCESSKEY2}}
       run: |
         python -m unittest tests/test_api_interface.py
 

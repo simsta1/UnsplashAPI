@@ -5,6 +5,7 @@ from UnsplashAPI.api import UnsplashAPI
 import os
 
 access_key = os.environ['ACCESSKEY']
+access_key2 = os.environ['ACCESSKEY2']
 
 class TestAPICollections(unittest.TestCase):
     """
