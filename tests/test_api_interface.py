@@ -20,10 +20,10 @@ class TestAPICollections(unittest.TestCase):
     collection_id = 2001768
     collection_title = 'Life in the Deep'
 
+    api = UnsplashAPI(access_key=access_key)
 
     # General Test
     def test_init(self):
-        self.api = UnsplashAPI(access_key=access_key)
         self.assertIsInstance(self.api, UnsplashAPI)
 
     # Collections
