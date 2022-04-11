@@ -12,10 +12,6 @@ class TestUnsplashBase(unittest.TestCase):
         base = UnsplashBase(access_key=access_key)
         self.assertIsInstance(base, UnsplashBase)
 
-    def test_check_api(self):
-        base = UnsplashBase(access_key=access_key + 'wrong key')
-        self.assertRaises(AssertionError, base.check_status())
-
     def test_check_api_con(self):
         base = UnsplashBase(access_key=access_key)
         api_status = base.check_status()
