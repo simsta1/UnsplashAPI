@@ -40,4 +40,8 @@ jobs:
           ACCESSKEY: ${{ secrets.API_ACCESSKEY}}
       run: |
         python -m unittest tests/test_base.py
+    - name: Unittest - Subclasses
+      env:
+          ACCESSKEY: ${{ secrets.API_ACCESSKEY}}
+      run: |
         python -m unittest tests/test_subclasses.py
