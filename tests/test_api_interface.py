@@ -1,4 +1,3 @@
-from typing import final
 import unittest
 from urllib import response
 from xmlrpc.client import ResponseError
@@ -38,6 +37,7 @@ class TestAPICollections(unittest.TestCase):
                                                         items_per_page=self.items_per_page)
         except Exception:
             self.access_key_idx += 1
+            print('Changed Key ID')
             if self.access_key_idx == len(access_keys):
                 self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
@@ -54,6 +54,7 @@ class TestAPICollections(unittest.TestCase):
             response = self.api.list_collection(page=1, items_per_page=self.items_per_page)
         except Exception:
             self.access_key_idx += 1
+            print('Changed Key ID')
             if self.access_key_idx == len(access_keys):
                 self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
@@ -70,6 +71,7 @@ class TestAPICollections(unittest.TestCase):
             response = self.api.get_collection_by_id(collection_id=self.collection_id)
         except Exception:
             self.access_key_idx += 1
+            print('Changed Key ID')
             if self.access_key_idx == len(access_keys):
                 self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
@@ -86,6 +88,7 @@ class TestAPICollections(unittest.TestCase):
                                                     per_page=self.items_per_page)
         except Exception:
             self.access_key_idx += 1
+            print('Changed Key ID')
             if self.access_key_idx == len(access_keys):
                 self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
@@ -105,6 +108,7 @@ class TestAPICollections(unittest.TestCase):
             response = self.api.get_related_collections(collections_id=self.collection_id)
         except Exception:
             self.access_key_idx += 1
+            print('Changed Key ID')
             if self.access_key_idx == len(access_keys):
                 self.access_key_idx = 0
             self.api.access_key = access_keys[self.access_key_idx]
