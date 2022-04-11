@@ -4,7 +4,7 @@ sys.path.append('..')
 from UnsplashAPI.base import UnsplashBase
 import os
 
-access_key = os.environ['API_ACCESSKEY']
+access_key = os.environ['ACCESSKEY']
 
 class TestUnsplashBase(unittest.TestCase):
 
