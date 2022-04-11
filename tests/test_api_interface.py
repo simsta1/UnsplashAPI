@@ -47,7 +47,7 @@ class TestAPICollections(unittest.TestCase):
     def test_collections_get_collection_by_id(self):
         response = self.api.get_collection_by_id(collection_id=self.collection_id)
         self.assertIsInstance(response, dict)
-        self.assertEqual(response['id'], self.collection_id)
+        self.assertEqual(int(response['id']), self.collection_id)
         self.assertEqual(response['title'], self.collection_title)
     
     def test_collection_get_collection_photos(self):
