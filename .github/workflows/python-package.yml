@@ -45,3 +45,10 @@ jobs:
           ACCESSKEY: ${{ secrets.API_ACCESSKEY}}
       run: |
         python -m unittest tests/test_subclasses.py
+    - name: Unittest - API Interface
+      env:
+          ACCESSKEY: ${{ secrets.API_ACCESSKEY}}
+      run: |
+        python -m unittest tests/test_api_interface.py
+
+
