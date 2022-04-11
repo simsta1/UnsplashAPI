@@ -24,7 +24,7 @@ class TestAPICollections(unittest.TestCase):
     # General Test
     def test_init(self):
         self.api = UnsplashAPI(access_key=access_key)
-        self.assertIsInstance(self.api, UnsplashCollections)
+        self.assertIsInstance(self.api, UnsplashAPI)
 
     # Collections
     def test_collections_list_collections_paginate(self):
