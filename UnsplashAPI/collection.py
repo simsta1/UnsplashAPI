@@ -16,7 +16,7 @@ class UnsplashCollections(UnsplashBase):
         Args:
             access_key (str):       Access Key of the API
         """ 
-        super().__init__()
+        super().__init__(access_key=access_key)
         self.access_key = access_key
 
 
