@@ -12,7 +12,6 @@ class UnsplashBase:
         self.session = requests.Session()
         self._check_status()
         
-
     def _check_status(self):
         """
         Checks if the API is reachable.
@@ -37,3 +36,9 @@ class UnsplashBase:
         response_headers = dict(response.headers)
 
         return response_headers.get('X-Ratelimit-Remaining')
+
+    def get_headers(self):
+        response = requests.get(f'https://api.unsplash.com/users/{self.fixed_profile}', 
+                                params=dict(client_id=self.access_key))
+
+        return response.headers
