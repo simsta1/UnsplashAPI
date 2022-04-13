@@ -15,7 +15,7 @@ if LOAD_FROM_ENV:
     access_keys = [os.environ['ACCESSKEY'], os.environ['ACCESSKEY2'], os.environ['ACCESSKEY3']]
 else:
     with open('./tests/keys.txt', 'r') as txt_file:
-        access_keys = [key for key in txt_file]
+        access_keys = [key.strip() for key in txt_file]
 
 
 
@@ -160,10 +160,3 @@ class TestAPICollections(unittest.TestCase):
         element = response[0]
         for ckey in self.check_keys:
             self.assertIn(ckey, element.keys())
-
-    
-
-
-
-        
-        
