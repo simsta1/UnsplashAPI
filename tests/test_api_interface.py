@@ -1,19 +1,29 @@
 import unittest
+from unittest import result
 from urllib import response
 from xmlrpc.client import ResponseError
-from UnsplashAPI.api import UnsplashAPI
 import os
+import time
+#import sys
+#sys.path.insert(0, '..')
+from UnsplashAPI.api import UnsplashAPI
 
-access_keys = [os.environ['ACCESSKEY'], os.environ['ACCESSKEY2'], os.environ['ACCESSKEY3']]
+
+LOAD_FROM_ENV = True
+
+if LOAD_FROM_ENV:
+    access_keys = [os.environ['ACCESSKEY'], os.environ['ACCESSKEY2'], os.environ['ACCESSKEY3']]
+else:
+    with open('./tests/keys.txt', 'r') as txt_file:
+        access_keys = [key for key in txt_file]
+
+
 
 class TestAPICollections(unittest.TestCase):
     """
     This class implements test for collection endpoint.
     This class only tests responses from endpoints with read access.
     """
-    # Key
-    access_key_idx = 0
-
     # Params
     page_limit = 2
     items_per_page = 5
@@ -23,8 +33,10 @@ class TestAPICollections(unittest.TestCase):
     collection_id = 2001768
     collection_title = 'Life in the Deep'
 
+    access_key_idx = 0
+
     # Init API
-    api = UnsplashAPI(access_key=access_keys[access_key_idx])
+    api = UnsplashAPI(access_key=access_keys)
 
     # General Test
     def test_init(self):
@@ -32,34 +44,45 @@ class TestAPICollections(unittest.TestCase):
 
     # Collections
     def test_collections_list_collections_paginate(self):
-        response = self.api.list_collections_paginate(page_limit=self.page_limit, 
-                                                        items_per_page=self.items_per_page)            
         try:
-            results = []
-            for element in response:
-                results.append(element)
+            response = self.api.list_collections_paginate(page_limit=self.page_limit, 
+                                                        items_per_page=self.items_per_page)            
+            results = [element for element in response]
         except Exception:
-            self.access_key_idx += 1
-            print('Changed Key ID')
-            if self.access_key_idx == len(access_keys):
-                self.access_key_idx = 0
-            self.api.access_key = access_keys[self.access_key_idx]
-            results = []
-            for element in response:
-                results.append(element)
+            # Workaround for Rate Limits
+            rate_limit = int(self.api.get_current_rate_limit())
+            if rate_limit == 0:
+                print('No Remaining Rate Limits.', rate_limit)
+                while rate_limit == 0:
+                    self.access_key_idx += 1
+                    if self.access_key_idx == len(access_keys):
+                        self.access_key_idx = 0
+                    self.api.access_key = access_keys[self.access_key_idx]
+                    rate_limit = int(self.api.get_current_rate_limit())
+
+            response = self.api.list_collections_paginate(page_limit=self.page_limit, 
+                                                        items_per_page=self.items_per_page)            
+            # Perform request again
+            results = [element for element in response]
 
         self.assertEqual(self.page_limit, len(results))
-        self.assertEqual(self.items_per_page, len(element))
+        self.assertEqual(self.items_per_page, len(results[0]))
 
     def test_collections_list_collection(self):
         try:    
             response = self.api.list_collection(page=1, items_per_page=self.items_per_page)
         except Exception:
-            self.access_key_idx += 1
-            print('Changed Key ID')
-            if self.access_key_idx == len(access_keys):
-                self.access_key_idx = 0
-            self.api.access_key = access_keys[self.access_key_idx]
+            # Workaround for Rate Limits
+            rate_limit = int(self.api.get_current_rate_limit())
+            if rate_limit == 0:
+                print('No Remaining Rate Limits.', rate_limit)
+                while rate_limit == 0:
+                    self.access_key_idx += 1
+                    if self.access_key_idx == len(access_keys):
+                        self.access_key_idx = 0
+                    self.api.access_key = access_keys[self.access_key_idx]
+                    rate_limit = int(self.api.get_current_rate_limit())
+            # Perform request again
             response = self.api.list_collection(page=1, items_per_page=self.items_per_page)
 
         self.assertEqual(self.items_per_page, len(response))
@@ -72,11 +95,17 @@ class TestAPICollections(unittest.TestCase):
         try:
             response = self.api.get_collection_by_id(collection_id=self.collection_id)
         except Exception:
-            self.access_key_idx += 1
-            print('Changed Key ID')
-            if self.access_key_idx == len(access_keys):
-                self.access_key_idx = 0
-            self.api.access_key = access_keys[self.access_key_idx]
+            # Workaround for Rate Limits
+            rate_limit = int(self.api.get_current_rate_limit())
+            if rate_limit == 0:
+                print('No Remaining Rate Limits.', rate_limit)
+                while rate_limit == 0:
+                    self.access_key_idx += 1
+                    if self.access_key_idx == len(access_keys):
+                        self.access_key_idx = 0
+                    self.api.access_key = access_keys[self.access_key_idx]
+                    rate_limit = int(self.api.get_current_rate_limit())
+            # Perform request again
             response = self.api.get_collection_by_id(collection_id=self.collection_id)
 
         self.assertIsInstance(response, dict)
@@ -84,38 +113,45 @@ class TestAPICollections(unittest.TestCase):
         self.assertEqual(response['title'], self.collection_title)
     
     def test_collection_get_collection_photos(self):
-        response = self.api.get_collection_photos(collection_id=self.collection_id,
+        try:
+            response = self.api.get_collection_photos(collection_id=self.collection_id,
                                                     page_limit=self.page_limit, 
                                                     per_page=self.items_per_page)
-
-        
-        try:
-            elements = []
-            for element in response:
-                elements.append(element)
+            results = [element for element in response]
         except Exception:
-            self.access_key_idx += 1
-            print('Changed Key ID')
-            if self.access_key_idx == len(access_keys):
-                self.access_key_idx = 0
-            self.api.access_key = access_keys[self.access_key_idx]
-            elements = []
-            for element in response:
-                elements.append(element)
+            # Workaround for Rate Limits
+            rate_limit = int(self.api.get_current_rate_limit())
+            if rate_limit == 0:
+                print('No Remaining Rate Limits.', rate_limit)
+                while rate_limit == 0:
+                    self.access_key_idx += 1
+                    if self.access_key_idx == len(access_keys):
+                        self.access_key_idx = 0
+                    self.api.access_key = access_keys[self.access_key_idx]
+                    rate_limit = int(self.api.get_current_rate_limit())
+            print('Current Rate Limit', self.api.get_current_rate_limit())
+            # Perform request again
+            results = [element for element in response]
 
-        self.assertEqual(self.page_limit, len(elements))
-        self.assertEqual(self.items_per_page, len(element))
-        self.assertIsInstance(element[0], dict)
+        self.assertEqual(self.page_limit, len(results))
+        self.assertEqual(self.items_per_page, len(results[0]))
+        self.assertIsInstance(results[0][0], dict)
     
     def test_collections_get_related_collections(self):
         try:
             response = self.api.get_related_collections(collections_id=self.collection_id)
         except Exception:
-            self.access_key_idx += 1
-            print('Changed Key ID')
-            if self.access_key_idx == len(access_keys):
-                self.access_key_idx = 0
-            self.api.access_key = access_keys[self.access_key_idx]
+            # Workaround for Rate Limits
+            rate_limit = int(self.api.get_current_rate_limit())
+            if rate_limit == 0:
+                print('No Remaining Rate Limits.', rate_limit)
+                while rate_limit == 0:
+                    self.access_key_idx += 1
+                    if self.access_key_idx == len(access_keys):
+                        self.access_key_idx = 0
+                    self.api.access_key = access_keys[self.access_key_idx]
+                    rate_limit = int(self.api.get_current_rate_limit())
+            # Perform request again
             response = self.api.get_related_collections(collections_id=self.collection_id)
 
         self.assertIsInstance(response, list)
