@@ -169,7 +169,7 @@ class TestAPIPhotos(unittest.TestCase):
     page_limit = 2
     items_per_page = 5
     # Dict keys to check
-    check_keys = ['id', 'title', 'description', 'published_at']
+    check_keys = ['id', 'description', 'published_at', 'urls']
     # Check collection IDS
     photo_id = 'tCyI0KY9jTs'
 
