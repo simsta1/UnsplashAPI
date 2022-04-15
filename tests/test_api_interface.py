@@ -224,7 +224,7 @@ class TestAPIPhotos(unittest.TestCase):
 
             response = self.api.list_photos(page_limit=self.page_limit, 
                                                         items_per_page=self.items_per_page)            
-        self.assertEqual(self.items_per_page, len(results))
+        self.assertEqual(self.items_per_page, len(response))
         for key in self.check_keys:
             self.assertIn(key, response[0].keys())
         
