@@ -14,7 +14,7 @@ LOAD_FROM_ENV = True
 if LOAD_FROM_ENV:
     access_keys = [os.environ['ACCESSKEY'], os.environ['ACCESSKEY2'], os.environ['ACCESSKEY3']]
 else:
-    with open('./tests/keys.txt', 'r') as txt_file:
+    with open('keys.txt', 'r') as txt_file:
         access_keys = [key.strip() for key in txt_file]
 
 
@@ -169,7 +169,7 @@ class TestAPIPhotos(unittest.TestCase):
     page_limit = 2
     items_per_page = 5
     # Dict keys to check
-    check_keys = ['id', 'description', 'published_at', 'urls']
+    check_keys = ['id', 'description', 'urls', 'likes']
     # Check collection IDS
     photo_id = 'tCyI0KY9jTs'
 
