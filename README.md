@@ -1,6 +1,8 @@
 
 # Unsplash API
 
+[![.github/workflows/python-package.yml](https://github.com/SimonStaehli/UnsplashAPI/actions/workflows/python-package.yml/badge.svg)](https://github.com/SimonStaehli/UnsplashAPI/actions/workflows/python-package.yml)
+
 This is a inofficial Wrapper around the Unsplash API. 
 
 ## Installation
