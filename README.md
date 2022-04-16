@@ -1,6 +1,8 @@
 
 # Unsplash API
 
+[![.github/workflows/python-package.yml](https://github.com/SimonStaehli/UnsplashAPI/actions/workflows/python-package.yml/badge.svg)](https://github.com/SimonStaehli/UnsplashAPI/actions/workflows/python-package.yml)
+
 This is a inofficial Wrapper around the Unsplash API. 
 
 ## Installation
@@ -8,7 +10,7 @@ This is a inofficial Wrapper around the Unsplash API.
 Install project via pip
 
 ```bash
-$ pip install unsplashapi
+pip install unsplashapi
 ```
 
 ## Get an Access Key
@@ -32,6 +34,7 @@ api.get_current_rate_limit()
 
 ```
 ```python
+# Extract contents of an image
 from UnsplashAPI import UnsplashAPI
 
 api = UnsplashAPI(access_key='<your key>')
