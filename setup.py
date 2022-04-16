@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1'
+VERSION = '0.0.3'
 DESCRIPTION = 'Inofficial API Wrapper for Unsplash API'
 LONG_DESCRIPTION = 'A package which allow python users to easily interact with the UnplashAPI'
 
