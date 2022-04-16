@@ -1,7 +1,9 @@
 
 # Unsplash API
 
-[![.github/workflows/python-package.yml](https://github.com/SimonStaehli/UnsplashAPI/actions/workflows/python-package.yml/badge.svg)](https://github.com/SimonStaehli/UnsplashAPI/actions/workflows/python-package.yml)
+[![.github/workflows/python-package.yml](https://github.com/SimonStaehli/UnsplashAPI/actions/workflows/python-package.yml/badge.svg)](https://github.com/SimonStaehli/UnsplashAPI/actions/workflows/python-package.yml) 
+[![PyPI version fury.io](https://badge.fury.io/py/unsplashapi.svg)](https://pypi.python.org/pypi/unsplashapi/)
+
 
 This is a inofficial Wrapper around the Unsplash API. 
 
