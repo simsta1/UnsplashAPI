@@ -13,7 +13,7 @@ class UnsplashAPI(UnsplashCollections, UnsplashPhotos,
     def __init__(self, access_key):
         """
         Inofficial Wrapper class for the Unsplash API. 
-        
+
         All functions are named like the official endpoints, which can be found here: https://unsplash.com/documentation
 
         To get an access key:
