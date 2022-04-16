@@ -6,7 +6,7 @@ LONG_DESCRIPTION = 'A package which allow python users to easily interact with t
 
 # Setting up
 setup(
-    name="unplash-api",
+    name="unsplashapi",
     version=VERSION,
     author="SimonStaehli",
     author_email="<simon.staehli@students.fhnw.ch>",
