@@ -3,7 +3,6 @@
 
 This is a inofficial Wrapper around the Unsplash API. 
 
-
 ## Installation
 
 Install project via pip
@@ -11,6 +10,14 @@ Install project via pip
 ```bash
 $ pip install unsplashapi
 ```
+
+## Get an Access Key
+
+1. Register for a Developer Account on Unsplash.com
+2. Add a new application und `Your Apps`
+3. Adapt `Redirect URI & Permissions` according to your preferences
+4. Copy `Access Key` from `Keys`
+
     
 ## Usage/Examples
 
