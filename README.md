@@ -27,7 +27,7 @@ pip install unsplashapi
 
 ```python
 # Extracts Rate Limits of your key
-from UnsplashAPI import UnsplashAPI
+from unsplashapi import UnsplashAPI
 
 api = UnsplashAPI(access_key='<your key>')
 api.get_current_rate_limit()
@@ -37,7 +37,7 @@ api.get_current_rate_limit()
 ```
 ```python
 # Extract contents of an image
-from UnsplashAPI import UnsplashAPI
+from unsplashapi import UnsplashAPI
 
 api = UnsplashAPI(access_key='<your key>')
 api.get_photo_by_id(photo_id='ieic5Tq8YMk')
