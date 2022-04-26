@@ -1,5 +1,5 @@
 import unittest
-from UnsplashAPI.base import UnsplashBase
+from unsplashapi.base import UnsplashBase
 import os
 
 LOAD_FROM_ENV = True

@@ -6,7 +6,7 @@ import os
 import time
 #import sys
 #sys.path.insert(0, '..')
-from UnsplashAPI.api import UnsplashAPI
+from unsplashapi import UnsplashAPI
 
 
 LOAD_FROM_ENV = True

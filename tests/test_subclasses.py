@@ -1,8 +1,8 @@
 import unittest
-from UnsplashAPI.collection import UnsplashCollections
-from UnsplashAPI.photos import UnsplashPhotos, UnsplashSearch
-from UnsplashAPI.topics_stats import UnsplashStats, UnsplashTopics
-from UnsplashAPI.user import UnsplashUsers
+from unsplashapi.collection import UnsplashCollections
+from unsplashapi.photos import UnsplashPhotos, UnsplashSearch
+from unsplashapi.topics_stats import UnsplashStats, UnsplashTopics
+from unsplashapi.user import UnsplashUsers
 import os
 
 # Get Credentials for API
